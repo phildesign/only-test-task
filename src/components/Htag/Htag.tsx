@@ -50,6 +50,8 @@ const Htag = ({ tag, withBorder, children, className }: HtagProps): JSX.Element 
 					{children}
 				</div>
 			);
+		default:
+			return <></>;
 	}
 };
 
