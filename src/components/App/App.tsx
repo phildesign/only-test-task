@@ -1,11 +1,29 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Container from '../Container/Container';
 import TimePeriod from '../TimePeriod/TimePeriod';
 import Htag from '../Htag/Htag';
 import SliderDate from '../TimePeriod/SliderDate/SliderDate';
+import { ISlides } from '../../interfaces/slides.interface';
 
 import styles from './App.module.scss';
 
 const App = (): JSX.Element => {
+	const [data, setData] = useState<ISlides>({ data: [] });
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const result = await axios('https://63dbf3abc45e08a04351f659.mockapi.io/data');
+				setData({ data: result.data });
+			} catch (error) {
+				console.error('Ошибка при получении данных:', error);
+			}
+		};
+
+		fetchData();
+	}, []);
+
 	return (
 		<div className={styles.app}>
 			<Container>
@@ -13,7 +31,7 @@ const App = (): JSX.Element => {
 					<Htag tag="h2" withBorder>
 						Исторические <br /> даты
 					</Htag>
-					<SliderDate />
+					<SliderDate {...data} />
 				</TimePeriod>
 			</Container>
 		</div>
