@@ -1,0 +1,22 @@
+.h2 {
+	font-size: var(--font-size-h-tag-2);
+	line-height: 67.2px;
+	font-weight: 700;
+	color: #42567a;
+}
+
+.withBorder {
+	position: relative;
+	padding-left: 78px;
+	&::before {
+		content: '';
+		width: 5px;
+		height: 120px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		margin: auto;
+		background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
+	}
+}
