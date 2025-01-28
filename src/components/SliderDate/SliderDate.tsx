@@ -1,25 +1,23 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Htag from '../Htag/Htag';
 import Ptag from '../Ptag/Ptag';
+import { SliderDateProps } from './SliderDate.props';
 
 import 'swiper/css';
 import styles from './SliderDate.module.scss';
 
-const SliderDate: React.FC = () => {
+const SliderDate: React.FC<SliderDateProps> = ({ data }) => {
 	return (
 		<div className={styles.root}>
 			<Swiper spaceBetween={80} slidesPerView={3}>
-				<SwiperSlide className={styles.slide}>
-					<Htag tag="h3">2015</Htag>
-					<Ptag>
-						13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды
-					</Ptag>
-				</SwiperSlide>
-				<SwiperSlide>Slide 2</SwiperSlide>
-				<SwiperSlide>Slide 3</SwiperSlide>
-				<SwiperSlide>Slide 4</SwiperSlide>
-				<SwiperSlide>Slide 5</SwiperSlide>
-				<SwiperSlide>Slide 6</SwiperSlide>
+				{data?.map((item) => {
+					return (
+						<SwiperSlide className={styles.slide} key={item.id}>
+							<Htag tag="h3">{item.year}</Htag>
+							<Ptag>{item.text}</Ptag>
+						</SwiperSlide>
+					);
+				})}
 			</Swiper>
 		</div>
 	);
