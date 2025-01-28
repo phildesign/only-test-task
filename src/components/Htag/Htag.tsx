@@ -50,6 +50,8 @@ const Htag: React.FC<HtagProps> = ({ tag, withBorder, children, className }) => 
 					{children}
 				</div>
 			);
+		default:
+			return <></>;
 	}
 };
 export default Htag;
