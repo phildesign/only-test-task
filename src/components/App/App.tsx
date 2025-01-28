@@ -1,5 +1,6 @@
 import Container from '../Container/Container';
 import Htag from '../Htag/Htag';
+import SliderDate from '../SliderDate/SliderDate';
 import TimePeriod from '../TimePeriod/TimePeriod';
 
 import styles from './App.module.scss';
@@ -12,6 +13,7 @@ const App: React.FC = () => {
 					<Htag tag="h2" withBorder>
 						Исторические <br /> даты
 					</Htag>
+					<SliderDate />
 				</TimePeriod>
 			</Container>
 		</div>
